@@ -284,6 +284,17 @@ glb_socket_setopt (int sock, uint32_t const optflags)
         }
     }
 
+    if (glb_cnf->reuseaddr)
+    {
+        int enable = 1;
+        if (setsockopt (sock, SOL_SOCKET, SO_REUSEADDR, &enable, sizeof(enable)))
+        {
+            glb_log_warn ("Setting SO_REUSEADDR failed: %d (%s)",
+                          errno, strerror(errno));
+            ret = -errno;
+        }
+    }
+
     return ret;
 }
 

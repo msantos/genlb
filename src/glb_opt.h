@@ -20,6 +20,7 @@ typedef struct option glb_option_t;
 typedef enum glb_opt
 {
     GLB_OPT_NOOPT        = 0,
+    GLB_OPT_REUSEADDR    = 'A',
     GLB_OPT_DISCOVER     = 'D',
     GLB_OPT_KEEPALIVE    = 'K',
     GLB_OPT_LATENCY_COUNT= 'L',
@@ -54,6 +55,7 @@ static glb_option_t glb_options[] =
     { "top",             GLB_NA, NULL, GLB_OPT_TOP           },
     { "version",         GLB_NA, NULL, GLB_OPT_VERSION       },
     { "defer-accept",    GLB_NA, NULL, GLB_OPT_DEFER_ACCEPT  },
+    { "reuseaddr",       GLB_NA, NULL, GLB_OPT_REUSEADDR     },
     { "round",           GLB_NA, NULL, GLB_OPT_ROUND_ROBIN   },
     { "round-robin",     GLB_NA, NULL, GLB_OPT_ROUND_ROBIN   },
     { "rrb",             GLB_NA, NULL, GLB_OPT_ROUND_ROBIN   },

@@ -174,7 +174,7 @@ glb_cnf_print (FILE* out, const glb_cnf_t* cnf)
 #if GLBD
              "Number of threads: %d, max conn: %d, "
              "nodelay: %s, keepalive: %s, defer accept: %s, linger: %s, "
-             "daemon: %s, "
+             "reuseaddr: %s, daemon: %s, "
 #endif
              "lat.count: %d, policy: '%s', top: %s, verbose: %s\n",
 #if GLBD
@@ -184,6 +184,7 @@ glb_cnf_print (FILE* out, const glb_cnf_t* cnf)
              cnf->keepalive ? "ON" : "OFF",
              cnf->defer_accept ? "ON" : "OFF",
              cnf->linger ? "ON" : "OFF",
+             cnf->reuseaddr ? "ON" : "OFF",
              cnf->daemonize ? "YES" : "NO",
 #endif
              cnf->lat_factor,
