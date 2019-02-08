@@ -96,6 +96,9 @@ cmd_parse_options (int argc, char* argv[], glb_cnf_t* cnf)
         case GLB_OPT_REUSEADDR:
             cnf->reuseaddr = true;
             break;
+        case GLB_OPT_REUSEPORT:
+            cnf->reuseport = true;
+            break;
         case GLB_OPT_MAX_CONN:
             cnf->max_conn = strtol (optarg, &endptr, 10);
             if ((*endptr != '\0' && !isspace(*endptr)) || errno) {
@@ -189,6 +192,9 @@ glb_cmd_help (FILE* out, const char* progname)
     fprintf (out,
              "  -A|--reuseaddr            "
              "enable reuse of local addresses.\n");
+    fprintf (out,
+             "  -P|--reusport             "
+             "permit multiple socketstobind a port.\n");
     fprintf (out,
              "  -s|--source               "
              "turn on source tracking: route connections from one\n"

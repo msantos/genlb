@@ -39,6 +39,7 @@ typedef struct glb_cnf
     bool           keepalive;    // use SO_KEEPALIVE?
     bool           linger;       // use SO_LINGER?
     bool           reuseaddr;    // use SO_REUSEADDR?
+    bool           reuseport;    // use SO_REUSEPORT?
     bool           defer_accept; // use TCP_DEFER_ACCEPT?
     bool           daemonize;    // become a daemon?
     bool           synchronous;  // connect synchronously

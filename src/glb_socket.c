@@ -295,6 +295,17 @@ glb_socket_setopt (int sock, uint32_t const optflags)
         }
     }
 
+    if (glb_cnf->reuseport)
+    {
+        int enable = 1;
+        if (setsockopt (sock, SOL_SOCKET, SO_REUSEPORT, &enable, sizeof(enable)))
+        {
+            glb_log_warn ("Setting SO_REUSEPORT failed: %d (%s)",
+                          errno, strerror(errno));
+            ret = -errno;
+        }
+    }
+
     return ret;
 }
 
