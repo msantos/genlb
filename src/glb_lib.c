@@ -87,8 +87,9 @@ glb_match_address(const struct sockaddr* const addr, socklen_t const addrlen)
     return (
         addr->sa_family   == AF_INET &&
         addr_in->sin_port == glb_cnf->inc_addr.sin_port &&
-        !memcmp (&addr_in->sin_addr, &glb_cnf->inc_addr.sin_addr,
-                 sizeof(struct in_addr))
+        (glb_cnf->inc_addr.sin_addr.s_addr == INADDR_ANY ||
+         !memcmp (&addr_in->sin_addr, &glb_cnf->inc_addr.sin_addr,
+                 sizeof(struct in_addr)))
         );
 }
 
