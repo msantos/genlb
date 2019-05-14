@@ -193,8 +193,8 @@ glb_cmd_help (FILE* out, const char* progname)
              "  -A|--reuseaddr            "
              "enable reuse of local addresses.\n");
     fprintf (out,
-             "  -P|--reusport             "
-             "permit multiple socketstobind a port.\n");
+             "  -P|--reuseport             "
+             "permit multiple sockets to bind a port.\n");
     fprintf (out,
              "  -s|--source               "
              "turn on source tracking: route connections from one\n"
