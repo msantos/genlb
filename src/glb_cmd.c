@@ -124,6 +124,14 @@ cmd_parse_options (int argc, char* argv[], glb_cnf_t* cnf)
         case GLB_OPT_SRC_TRACKING:
             cnf->policy = GLB_POLICY_SOURCE;
             break;
+        case GLB_OPT_SYNCNT:
+            cnf->syncnt = strtol (optarg, &endptr, 10);
+            if ((*endptr != '\0' && !isspace(*endptr)) || errno) {
+                fprintf (stderr, "Bad syncnt value: %s. Integer expected.\n",
+                         optarg);
+                exit (EXIT_FAILURE);
+            }
+            break;
         case GLB_OPT_VERBOSE:
             cnf->verbose = true;
             break;
@@ -199,6 +207,9 @@ glb_cmd_help (FILE* out, const char* progname)
              "  -s|--source               "
              "turn on source tracking: route connections from one\n"
              "                            source to the same destination.\n");
+    fprintf (out,
+             "  -R|--syncnt               "
+             "set number of SYN retransmits sent when attempting to connnect\n");
     fprintf (out,
              "  -t|--threads N            "
              "number of working threads (connection pools).\n");

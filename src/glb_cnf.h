@@ -49,6 +49,7 @@ typedef struct glb_cnf
     bool           top;          // only use top weighted destinations
     bool           ctrl_set;     // was set? (false)
     int            lat_factor;   // smoothe latency over that many samples
+    int            syncnt;       // number of SYN retransmits
     glb_policy_t   policy;       // algorithm to use for load-balancing
     size_t         n_dst;        // number of destinations
     glb_dst_t      dst[];        // destination descriptions

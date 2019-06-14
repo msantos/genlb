@@ -130,6 +130,15 @@ env_parse_options (glb_cnf_t* const cnf, const char* opts)
         case GLB_OPT_SRC_TRACKING:
             cnf->policy = GLB_POLICY_SOURCE;
             break;
+        case GLB_OPT_SYNCNT:
+            if (i + 1 < argc) {
+                int syncnt = strtol (argv[i + 1], &endptr, 10);
+                if ((*endptr == '\0' || isspace(*endptr)) && !errno && syncnt >= 0){
+                    i++;
+                    cnf->syncnt = syncnt;
+                }
+            }
+            break;
         case GLB_OPT_VERBOSE:
             cnf->verbose = true;
             break;
