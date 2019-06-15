@@ -106,6 +106,7 @@ env_parse_options (glb_cnf_t* const cnf, const char* opts)
             break;
         case GLB_OPT_INTERVAL:
             if (i + 1 < argc) {
+                errno = 0;
                 long long intvl =
                     glb_time_from_double (strtod (argv[i + 1], &endptr));
                 if ((*endptr == '\0' || isspace(*endptr)) && !errno &&
@@ -117,6 +118,7 @@ env_parse_options (glb_cnf_t* const cnf, const char* opts)
             break;
         case GLB_OPT_LATENCY_COUNT:
             if (i + 1 < argc) {
+                errno = 0;
                 long lf = strtol (argv[i + 1], &endptr, 10);
                 if ((*endptr == '\0' || isspace(*endptr)) && !errno && lf >= 0){
                     i++;
@@ -132,6 +134,7 @@ env_parse_options (glb_cnf_t* const cnf, const char* opts)
             break;
         case GLB_OPT_SYNCNT:
             if (i + 1 < argc) {
+                errno = 0;
                 int syncnt = strtol (argv[i + 1], &endptr, 10);
                 if ((*endptr == '\0' || isspace(*endptr)) && !errno && syncnt >= 0){
                     i++;
@@ -152,6 +155,7 @@ env_parse_options (glb_cnf_t* const cnf, const char* opts)
 #endif /* 0 */
         case GLB_OPT_EXTRA_POLLS:
             if (i + 1 < argc) {
+                errno = 0;
                 glb_time_t ext= glb_time_from_double(strtod(argv[i+1],&endptr));
                 if ((*endptr == '\0' || isspace(*endptr)) && !errno && ext >= 0)
                 {
