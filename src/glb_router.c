@@ -683,11 +683,13 @@ router_connect_dst (glb_router_t*   const router,
             glb_log_debug ("Connecting to %s", a.str);
         }
 
+#ifdef TCP_SYNCNT
         if (router->cnf->syncnt > 0) {
             (void)setsockopt(sock, IPPROTO_TCP, TCP_SYNCNT,
                         (const void *)&router->cnf->syncnt,
                         sizeof(router->cnf->syncnt));
         }
+#endif
 
         ret = glb_connect (sock, (struct sockaddr*)&dst->dst.addr,
                            sizeof (dst->dst.addr));
